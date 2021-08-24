@@ -43,7 +43,7 @@ public class FileChooserWithOverwriteGuard extends JFileChooser {
         if (file.exists()) {
             switch (this.getConfirmationResponse(file.getName())) {
                 case JOptionPane.YES_OPTION:
-                    this.cancelSelection();
+                    super.approveSelection();
                     break;
                 case JOptionPane.NO_OPTION:
                     super.approveSelection();
@@ -53,7 +53,7 @@ public class FileChooserWithOverwriteGuard extends JFileChooser {
                     super.approveSelection();
             }
         } else {
-            super.approveSelection();
+            this.cancelSelection();
         }
     }
     
