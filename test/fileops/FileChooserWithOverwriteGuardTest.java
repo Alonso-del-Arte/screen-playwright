@@ -6,6 +6,8 @@
 package fileops;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -77,18 +79,87 @@ public class FileChooserWithOverwriteGuardTest {
     }
     
     /**
-     * Test of approveSelection method, of class FileChooserWithOverwriteGuard.
+     * Test of the approveSelection procedure, of the 
+     * FileChooserWithOverwriteGuard class. If the user is informed that a file 
+     * already exists but chooses to overwrite it anyway, the program should be 
+     * able to go ahead and overwrite the file.
      */
     @Test
     public void testApproveSelection() {
         System.out.println("approveSelection");
+        ChooserListener listener = new ChooserListener();
         FileChooserWithOverwriteGuardImpl chooser 
-                = new FileChooserWithOverwriteGuardImpl();
+                = new FileChooserWithOverwriteGuardImpl(JOptionPane.YES_OPTION);
         chooser.setSelectedFile(sampleFile);
-        chooser.setMockResponse(JOptionPane.YES_OPTION);
+        chooser.addActionListener(listener);
         boolean opResult = attemptOverwrite(chooser, 
                 "approve selection overwrite test");
         assert opResult : "Should have been able to overwrite sample file";
+        assertEquals(1, listener.approveCallCount);
+        assertEquals(0, listener.cancelCallCount);
+    }
+    
+    /**
+     * Another test of the approveSelection procedure, of the 
+     * FileChooserWithOverwriteGuard class. If the user is informed that a file 
+     * already exists and decides to click "No" so as to choose a different 
+     * filename, neither the Approve Selection event nor the Cancel Selection 
+     * event should be sent to any action listeners.
+     */
+    @Test
+    public void testAllowUserToChooseDifferentFilename() {
+        ChooserListener listener = new ChooserListener();
+        FileChooserWithOverwriteGuardImpl chooser 
+                = new FileChooserWithOverwriteGuardImpl(JOptionPane.NO_OPTION);
+        chooser.setSelectedFile(sampleFile);
+        chooser.addActionListener(listener);
+        chooser.approveSelection();
+        assertEquals(0, listener.approveCallCount);
+        assertEquals(0, listener.cancelCallCount);
+    }
+    
+    /**
+     * Another test of the approveSelection procedure, of the 
+     * FileChooserWithOverwriteGuard class. If the user is informed that a file 
+     * already exists and decides not to overwrite it, the program should then 
+     * leave the file alone.
+     */
+    @Test
+    public void testRejectOverwrite() {
+        ChooserListener listener = new ChooserListener();
+        FileChooserWithOverwriteGuardImpl chooser 
+                = new FileChooserWithOverwriteGuardImpl(JOptionPane
+                        .CANCEL_OPTION);
+        chooser.setSelectedFile(sampleFile);
+        chooser.addActionListener(listener);
+        boolean opResult = attemptOverwrite(chooser, 
+                "reject selection overwrite test");
+        assert !opResult : "Should not have been able to overwrite sample file";
+        assertEquals(0, listener.approveCallCount);
+        assertEquals(1, listener.cancelCallCount);
+    }
+    
+    /**
+     * Another test of the approveSelection procedure, of the 
+     * FileChooserWithOverwriteGuard class. If the file does not already exist, 
+     * the FileChooserWithOverwriteGuard should not block the creation of the 
+     * file.
+     */
+    @Test
+    public void testAllowNewFileCreation() {
+        ChooserListener listener = new ChooserListener();
+        FileChooserWithOverwriteGuardImpl chooser 
+                = new FileChooserWithOverwriteGuardImpl(JOptionPane.YES_OPTION);
+        String fileName = "ExtraExampleFile" + RANDOM.nextInt() + ".txt";
+        String pathName = TEMP_DIR_PATH + File.separatorChar + fileName;
+        File file = new File(pathName);
+        String preMsg = pathName + " should not already exist";
+        assert !file.exists() : preMsg;
+        chooser.setSelectedFile(file);
+        chooser.addActionListener(listener);
+        chooser.approveSelection();
+        assertEquals(1, listener.approveCallCount);
+        assertEquals(0, listener.cancelCallCount);
     }
     
     @After
@@ -110,10 +181,10 @@ public class FileChooserWithOverwriteGuardTest {
         System.out.println("File successfully deleted.");
     }
 
-    static class FileChooserWithOverwriteGuardImpl 
+    private static class FileChooserWithOverwriteGuardImpl 
             extends FileChooserWithOverwriteGuard {
         
-        private int mockResponse = JOptionPane.YES_OPTION;
+        private int mockResponse;
         
         void setMockResponse(int responseCode) {
             this.mockResponse = responseCode;
@@ -143,6 +214,34 @@ public class FileChooserWithOverwriteGuardTest {
                     String excMsg = "Response code " + this.mockResponse 
                             + " not recognized";
                     throw new RuntimeException(excMsg);
+            }
+        }
+
+        public FileChooserWithOverwriteGuardImpl(int response) {
+            this.mockResponse = response;
+        }
+        
+    }
+    
+    private static class ChooserListener implements ActionListener {
+        
+        int approveCallCount = 0;
+        
+        int cancelCallCount = 0;
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String command = ae.getActionCommand();
+            switch (command) {
+                case JFileChooser.APPROVE_SELECTION:
+                    this.approveCallCount++;
+                    break;
+                case JFileChooser.CANCEL_SELECTION:
+                    this.cancelCallCount++;
+                    break;
+                default:
+                    System.out.println("Command \"" + command 
+                            + "\" is not of interest to this listener");
             }
         }
         
