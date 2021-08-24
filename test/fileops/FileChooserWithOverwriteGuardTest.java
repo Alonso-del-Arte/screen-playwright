@@ -141,6 +141,27 @@ public class FileChooserWithOverwriteGuardTest {
     
     /**
      * Another test of the approveSelection procedure, of the 
+     * FileChooserWithOverwriteGuard class. If the user is informed that a file 
+     * already exists and decides to close the dialog rather than click 
+     * "Cancel," the overwrite should still be canceled.
+     */
+    @Test
+    public void testClosedSameAsRejectOverwrite() {
+        ChooserListener listener = new ChooserListener();
+        FileChooserWithOverwriteGuardImpl chooser 
+                = new FileChooserWithOverwriteGuardImpl(JOptionPane
+                        .CLOSED_OPTION);
+        chooser.setSelectedFile(sampleFile);
+        chooser.addActionListener(listener);
+        boolean opResult = attemptOverwrite(chooser, 
+                "close dialog box test");
+        assert !opResult : "Should not have been able to overwrite sample file";
+        assertEquals(0, listener.approveCallCount);
+        assertEquals(1, listener.cancelCallCount);
+    }
+    
+    /**
+     * Another test of the approveSelection procedure, of the 
      * FileChooserWithOverwriteGuard class. If the file does not already exist, 
      * the FileChooserWithOverwriteGuard should not block the creation of the 
      * file.
