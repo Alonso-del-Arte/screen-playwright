@@ -20,31 +20,31 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Tests of the Element class.
  * @author Alonso del Arte
  */
 public class ElementTest {
     
     /**
-     * Test of getText method, of class Element.
+     * Test of the getText function, of the Element class.
      */
     @Test
     public void testGetText() {
         System.out.println("getText");
         String expected = "Expecting to get this text back";
-        Element instance = new ElementImpl(expected);
+        Element instance = new ElementImpl(0, expected);
         String actual = instance.getText();
         assertEquals(expected, actual);
     }
 
     /**
-     * Test of setText method, of class Element.
+     * Test of the setText procedure, of the Element class.
      */
     @Test
     public void testSetText() {
         System.out.println("setText");
         String initial = "This was the initial text";
-        Element instance = new ElementImpl(initial);
+        Element instance = new ElementImpl(0, initial);
         String expected = "This is the replacement text";
         instance.setText(expected);
         String actual = instance.getText();
@@ -52,12 +52,12 @@ public class ElementTest {
     }
     
     /**
-     * Test of the getSpacingForPreformattedText function of the Element class.
+     * Test of the getSpacingForPreformattedText function, of the Element class.
      */
     @Test
     public void testGetSpacingForPreformattedText() {
         System.out.println("getSpacingForPreformattedText");
-        Element instance = new ElementImpl("For testing purposes");
+        Element instance = new ElementImpl(0, "For testing purposes");
         String expected = "";
         String actual = instance.getSpacingForPreformattedText();
         assertEquals(expected, actual);
@@ -65,26 +65,8 @@ public class ElementTest {
 
     public class ElementImpl extends Element {
 
-        private static final String DEFAULT_TEST_TEXT 
-                = "For testing purposes only";
-        
-        @Override
-        public String toPreformattedText() {
-            return DEFAULT_TEST_TEXT;
-        }
-
-        @Override
-        public String toPlainText() {
-            return DEFAULT_TEST_TEXT;
-        }
-
-        @Override
-        public String toXML() {
-            return DEFAULT_TEST_TEXT;
-        }
-
-        public ElementImpl(String initialText) {
-            super(initialText);
+        public ElementImpl(int spacingCount, String initialText) {
+            super("element", spacingCount, initialText);
         }
 
     }

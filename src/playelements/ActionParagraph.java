@@ -22,26 +22,8 @@ package playelements;
  */
 public class ActionParagraph extends Element {
     
-    // TODO: Write tests for this
-    @Override
-    public String toPreformattedText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toPlainText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toXML() {
-        return "Not implemented yet";
-    }
-    
     public ActionParagraph(String initialText) {
-        super(initialText);
+        super("action", 0, initialText);
     }
     
 }

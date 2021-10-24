@@ -24,24 +24,12 @@ public class CharacterLabel extends Element {
     
     // TODO: Write tests for this
     @Override
-    public String toPreformattedText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
     public String toPlainText() {
         return "Not implemented yet";
     }
     
-    // TODO: Write tests for this
-    @Override
-    public String toXML() {
-        return "Not implemented yet";
-    }
-    
     public CharacterLabel(String initialText) {
-        super(initialText);
+        super("cue", 0, initialText);
     }
     
 }

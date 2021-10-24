@@ -22,26 +22,8 @@ package playelements;
  */
 public class DialogueParenthetical extends Element {
     
-    // TODO: Write tests for this
-    @Override
-    public String toPreformattedText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toPlainText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toXML() {
-        return "Not implemented yet";
-    }
-    
     public DialogueParenthetical(String initialText) {
-        super(initialText);
+        super("parenthetical", 0, initialText);
     }
     
 }

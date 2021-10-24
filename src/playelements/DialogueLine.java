@@ -22,26 +22,8 @@ package playelements;
  */
 public class DialogueLine extends Element {
     
-    // TODO: Write tests for this
-    @Override
-    public String toPreformattedText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toPlainText() {
-        return "Not implemented yet";
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public String toXML() {
-        return "Not implemented yet";
-    }
-    
     public DialogueLine(String initialText) {
-        super(initialText);
+        super("dialogue", 0, initialText);
     }
     
 }
