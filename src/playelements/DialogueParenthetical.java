@@ -24,7 +24,7 @@ public class DialogueParenthetical extends Element {
     
     // TODO: Write tests for this
     public DialogueParenthetical(String initialText) {
-        super("NO TEST WRITTEN YET", 0, initialText);
+        super("parenthetical", 0, initialText);
     }
     
 }
