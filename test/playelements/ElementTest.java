@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -16,6 +16,8 @@
  */
 package playelements;
 
+import java.util.Random;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,6 +26,18 @@ import static org.junit.Assert.*;
  * @author Alonso del Arte
  */
 public class ElementTest {
+    
+    private static final Random RANDOM = new Random();
+    
+    @Test
+    public void testGetElementType() {
+        System.out.println("getElementType");
+        String expected = "example" + RANDOM.nextInt();
+        Element instance = new Element(expected, "FOR TESTING PURPOSES ONLY") {
+        };
+        String actual = instance.getElementType();
+        assertEquals(expected, actual);
+    }
     
     /**
      * Test of the getText function, of the Element class.
