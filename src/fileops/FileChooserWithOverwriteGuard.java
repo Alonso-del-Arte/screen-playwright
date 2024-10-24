@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -36,7 +36,11 @@ public class FileChooserWithOverwriteGuard extends JFileChooser {
                         + " already exists", JOptionPane.YES_NO_CANCEL_OPTION);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Approves the selection, though first checking whether or not the file 
+     * already exists. If the file already exists, the user is presented with 
+     * the option to go ahead or think of a different name for the file.
+     */
     @Override
     public void approveSelection() {
         File file = this.getSelectedFile();
@@ -44,7 +48,6 @@ public class FileChooserWithOverwriteGuard extends JFileChooser {
             switch (this.getConfirmationResponse(file.getName())) {
                 case JOptionPane.YES_OPTION:
                     super.approveSelection();
-                    break;
                 case JOptionPane.NO_OPTION:
                     return;
                 case JOptionPane.CLOSED_OPTION:
