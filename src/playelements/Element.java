@@ -32,6 +32,10 @@ abstract class Element {
     
     private final int precedingSpaceCount;
     
+    String getElementType() {
+        return "SORRY, NOT IMPLEMENTED YET";
+    }
+    
     /**
      * Retrieves the text contained by this element. No formatting or case 
      * changes will be applied, nor should it contain any carriage returns or 
