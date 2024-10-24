@@ -29,7 +29,7 @@ public class CharacterLabel extends Element {
     }
     
     public CharacterLabel(String initialText) {
-        super("cue", 0, initialText);
+        super("SORRY, NOT IMPLEMENTED YET", 0, initialText);
     }
     
 }
