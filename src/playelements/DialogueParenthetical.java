@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -22,8 +22,9 @@ package playelements;
  */
 public class DialogueParenthetical extends Element {
     
+    // TODO: Write tests for this
     public DialogueParenthetical(String initialText) {
-        super("parenthetical", 0, initialText);
+        super("NO TEST WRITTEN YET", 0, initialText);
     }
     
 }
