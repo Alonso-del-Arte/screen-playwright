@@ -33,7 +33,7 @@ abstract class Element {
     private final int precedingSpaceCount;
     
     String getElementType() {
-        return "SORRY, NOT IMPLEMENTED YET";
+        return this.elementType;
     }
     
     /**
