@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
  */
 public class ElementTest {
     
-    private static final Random RANDOM = new Random();
+    static final Random RANDOM = new Random();
     
     @Test
     public void testGetElementType() {
