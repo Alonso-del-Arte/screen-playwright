@@ -32,7 +32,7 @@ abstract class Element {
     
     private final int precedingSpaceCount;
     
-    String getElementType() {
+    final String getElementType() {
         return this.elementType;
     }
     
