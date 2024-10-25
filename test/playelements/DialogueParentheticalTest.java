@@ -30,10 +30,11 @@ public class DialogueParentheticalTest {
     @Test
     public void testGetElementType() {
         System.out.println("getElementType");
-        Element instance = new DialogueParenthetical("expected");
-        String expected = "parenthetical";
-        String actual = instance.getElementType();
-        assertEquals(expected, actual);
+        fail("REWRITE THIS TEST");
+//        Element instance = new DialogueParenthetical("expected");
+//        String expected = "parenthetical";
+//        String actual = instance.getElementType();
+//        assertEquals(expected, actual);
     }
     
     /**

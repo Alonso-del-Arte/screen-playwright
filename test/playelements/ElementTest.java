@@ -32,11 +32,12 @@ public class ElementTest {
     @Test
     public void testGetElementType() {
         System.out.println("getElementType");
-        String expected = "example" + RANDOM.nextInt();
-        Element instance = new Element(expected, "FOR TESTING PURPOSES ONLY") {
-        };
-        String actual = instance.getElementType();
-        assertEquals(expected, actual);
+        fail("REWRITE");
+//        String expected = "example" + RANDOM.nextInt();
+//        Element instance = new Element(expected, "FOR TESTING PURPOSES ONLY") {
+//        };
+//        String actual = instance.getElementType();
+//        assertEquals(expected, actual);
     }
     
     /**
@@ -80,7 +81,7 @@ public class ElementTest {
     public class ElementImpl extends Element {
 
         public ElementImpl(int spacingCount, String initialText) {
-            super("element", spacingCount, initialText);
+            super(ElementType.ACTION, spacingCount, initialText);
         }
 
     }

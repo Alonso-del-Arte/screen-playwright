@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -28,8 +28,9 @@ public class CharacterLabel extends Element {
         return "Not implemented yet";
     }
     
+    // TODO: Write tests for this
     public CharacterLabel(String initialText) {
-        super("SORRY, NOT IMPLEMENTED YET", 0, initialText);
+        super(ElementType.ACTION, 0, initialText);
     }
     
 }

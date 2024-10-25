@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -22,8 +22,9 @@ package playelements;
  */
 public class ActionParagraph extends Element {
     
+    // TODO: Write tests for this
     public ActionParagraph(String initialText) {
-        super("action", 0, initialText);
+        super(ElementType.CHARACTER_LABEL, 0, initialText);
     }
     
 }

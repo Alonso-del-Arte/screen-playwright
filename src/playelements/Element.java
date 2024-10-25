@@ -24,7 +24,7 @@ package playelements;
  */
 abstract class Element {
     
-    private final String elementType;
+    private final ElementType elementType;
     
     private final String spacing = " ";
     
@@ -32,8 +32,9 @@ abstract class Element {
     
     private final int precedingSpaceCount;
     
-    final String getElementType() {
-        return this.elementType;
+    final ElementType getElementType() {
+        return ElementType.PARENTHETICAL;
+//        return this.elementType;
     }
     
     /**
@@ -104,11 +105,11 @@ abstract class Element {
         return "Sorry, not implemented yet";
     }
     
-    Element(String type, String initialText) {
+    Element(ElementType type, String initialText) {
         this(type, 0, initialText);
     }
     
-    Element(String type, int spacingCount, String initialText) {
+    Element(ElementType type, int spacingCount, String initialText) {
         this.elementType = type;
         this.precedingSpaceCount = spacingCount;
         this.elementText = initialText;

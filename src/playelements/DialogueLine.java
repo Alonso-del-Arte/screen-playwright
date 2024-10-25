@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Alonso del Arte
+ * Copyright (C) 2024 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -22,8 +22,9 @@ package playelements;
  */
 public class DialogueLine extends Element {
     
+    // TODO: Write tests for this
     public DialogueLine(String initialText) {
-        super("dialogue", 0, initialText);
+        super(ElementType.ACTION, 0, initialText);
     }
     
 }
