@@ -31,7 +31,7 @@ public class ElementTest {
     
     private static final ElementType[] ELEMENT_TYPES = ElementType.values();
     
-    private static final String DEFAULT_TEXT = "FOR TESTING PURPOSES ONLY";
+    static final String DEFAULT_TEXT = "For testing purposes only.";
     
     @Test
     public void testGetElementType() {
