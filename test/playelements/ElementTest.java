@@ -29,15 +29,18 @@ public class ElementTest {
     
     static final Random RANDOM = new Random();
     
+    private static final ElementType[] ELEMENT_TYPES = ElementType.values();
+    
+    private static final String DEFAULT_TEXT = "FOR TESTING PURPOSES ONLY";
+    
     @Test
     public void testGetElementType() {
         System.out.println("getElementType");
-        fail("REWRITE");
-//        String expected = "example" + RANDOM.nextInt();
-//        Element instance = new Element(expected, "FOR TESTING PURPOSES ONLY") {
-//        };
-//        String actual = instance.getElementType();
-//        assertEquals(expected, actual);
+        for (ElementType expected : ELEMENT_TYPES) {
+            Element instance = new ElementImpl(expected, 0, DEFAULT_TEXT);
+            ElementType actual = instance.getElementType();
+            assertEquals(expected, actual);
+        }
     }
     
     /**
@@ -47,9 +50,10 @@ public class ElementTest {
     public void testGetText() {
         System.out.println("getText");
         String expected = "Expecting to get this text back";
-        Element instance = new ElementImpl(0, expected);
-        String actual = instance.getText();
-        assertEquals(expected, actual);
+        fail("REWRITE");
+//        Element instance = new ElementImpl(0, expected);
+//        String actual = instance.getText();
+//        assertEquals(expected, actual);
     }
 
     /**
@@ -59,11 +63,12 @@ public class ElementTest {
     public void testSetText() {
         System.out.println("setText");
         String initial = "This was the initial text";
-        Element instance = new ElementImpl(0, initial);
-        String expected = "This is the replacement text";
-        instance.setText(expected);
-        String actual = instance.getText();
-        assertEquals(expected, actual);
+        fail("REWRITE");
+//        Element instance = new ElementImpl(0, initial);
+//        String expected = "This is the replacement text";
+//        instance.setText(expected);
+//        String actual = instance.getText();
+//        assertEquals(expected, actual);
     }
     
     /**
@@ -72,16 +77,17 @@ public class ElementTest {
     @Test
     public void testGetSpacingForPreformattedText() {
         System.out.println("getSpacingForPreformattedText");
-        Element instance = new ElementImpl(0, "For testing purposes");
-        String expected = "";
-        String actual = instance.getSpacingForPreformattedText();
-        assertEquals(expected, actual);
+        fail("REWRITE");
+//        Element instance = new ElementImpl(0, "For testing purposes");
+//        String expected = "";
+//        String actual = instance.getSpacingForPreformattedText();
+//        assertEquals(expected, actual);
     }
 
-    public class ElementImpl extends Element {
+    static class ElementImpl extends Element {
 
-        public ElementImpl(int spacingCount, String initialText) {
-            super(ElementType.ACTION, spacingCount, initialText);
+        ElementImpl(ElementType type, int spacingCount, String initialText) {
+            super(type, spacingCount, initialText);
         }
 
     }
