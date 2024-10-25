@@ -19,6 +19,7 @@ package playelements;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import static playelements.ElementTest.DEFAULT_TEXT;
 import static playelements.ElementTest.RANDOM;
 
 /**
@@ -30,11 +31,9 @@ public class DialogueParentheticalTest {
     @Test
     public void testGetElementType() {
         System.out.println("getElementType");
-        fail("REWRITE THIS TEST");
-//        Element instance = new DialogueParenthetical("expected");
-//        String expected = "parenthetical";
-//        String actual = instance.getElementType();
-//        assertEquals(expected, actual);
+        Element instance = new DialogueParenthetical(DEFAULT_TEXT);
+        ElementType actual = instance.getElementType();
+        assertEquals(ElementType.PARENTHETICAL, actual);
     }
     
     /**
