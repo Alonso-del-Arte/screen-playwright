@@ -33,8 +33,7 @@ abstract class Element {
     private final int precedingSpaceCount;
     
     final ElementType getElementType() {
-        return ElementType.PARENTHETICAL;
-//        return this.elementType;
+        return this.elementType;
     }
     
     /**
